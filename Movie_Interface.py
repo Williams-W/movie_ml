@@ -112,17 +112,17 @@ def main():
 
 def home_page(window):
     global selections_frame
-    selections_frame = tk.Frame(window, bg= "#FFD700")
+    selections_frame = tk.Frame(window, bg= "#f7f3df")
     selections_frame.pack(fill='both', expand=1)
 
     # Title Label at the top
-    tk.Label(selections_frame, text="Wyatt's Movie System", font=("Courier", 60), pady=100, bg= "#FFD700").pack()
+    tk.Label(selections_frame, text="Wyatt's Movie System", font=("Courier", 60), pady=100, bg= "#f7f3df").pack()
 
     # Search Bar Entry and Button in the same row
-    entry_frame = tk.Frame(selections_frame, pady=0, bg="#FFD700")
+    entry_frame = tk.Frame(selections_frame, pady=0, bg="#f7f3df")
     entry_frame.pack()
 
-    tk.Label(entry_frame, text="Movie Name", font=("Courier", 30), bg= "#FFD700", padx=45).pack(side=tk.LEFT)
+    tk.Label(entry_frame, text="Movie Name", font=("Courier", 30), bg= "#f7f3df", padx=45).pack(side=tk.LEFT)
 
     global e
     e = tk.StringVar()
@@ -132,19 +132,19 @@ def home_page(window):
     e_entry.focus_set()
 
     search_button = tk.Button(entry_frame, text="Search", width=15, height=2, font=("Comic Sans MS", 12),
-                              bg="#FFD580", fg="black", command=search_movie)
+                              bg="#cccccc", fg="black", command=search_movie)
     search_button.pack(side=tk.LEFT, padx=90)
 
     # Check button to filter out mature movie recommendations
     global filter_var
     filter_var = tk.BooleanVar(value=True)
     filter_checkbox = tk.Checkbutton(selections_frame, text="Filter Out Mature Movie Recommendations",
-                                     font=("Comic Sans", 15), variable=filter_var, bg="#FFD700", pady=10, padx=10)
+                                     font=("Comic Sans", 15), variable=filter_var, bg="#f7f3df", pady=10, padx=10)
     filter_checkbox.pack()
 
     # Button to go to the game page
     game_button = tk.Button(selections_frame, text="Go to Model", width=15, height=2, font=("Comic Sans", 15),
-                             bg="#FFD580", fg="Black", command=lambda: go_to_game(window))
+                             bg="#cccccc", fg="Black", command=lambda: go_to_game(window))
     game_button.pack(pady=125)
 
 def search_movie():
@@ -162,27 +162,27 @@ def display_movie_info(movie, filtered):
         widget.destroy()
 
     # Display movie information in separate frames
-    info_frame = tk.Frame(selections_frame, width=1400, height=700, pady=10, bg ="#FFD700")
+    info_frame = tk.Frame(selections_frame, width=1400, height=700, pady=10, bg ="#f7f3df")
     info_frame.pack()
 
     # Display the title with the movie name
     title_label = tk.Label(info_frame, text=f"Movie Information for {movie['Name'].values[0].title()}",
-                           font=("Cancun", 30), bg ="#FFD700")
+                           font=("Cancun", 30), bg ="#f7f3df")
     title_label.pack()
 
     # Create a frame for the left and right columns
-    columns_frame = tk.Frame(info_frame, width=1400, height=500, pady=10, bg ="#FFD700")
+    columns_frame = tk.Frame(info_frame, width=1400, height=500, pady=10, bg ="#f7f3df")
     columns_frame.pack(side=tk.TOP, pady=10)
 
     # Create frames for the left and right columns within the grouped frame
-    left_column_frame = tk.Frame(columns_frame, width=500, height=10, padx=50, bg ="#FFD700")  # Adjusted width and padding
+    left_column_frame = tk.Frame(columns_frame, width=500, height=10, padx=50, bg ="#f7f3df")  # Adjusted width and padding
     left_column_frame.pack(side=tk.LEFT)
 
-    right_column_frame = tk.Frame(columns_frame, width=300, height=10, padx=50, bg ="#FFD700")  # Adjusted width and padding
+    right_column_frame = tk.Frame(columns_frame, width=300, height=10, padx=50, bg ="#f7f3df")  # Adjusted width and padding
     right_column_frame.pack(side=tk.LEFT)
 
     # Create a new frame for the additional column to the right of right_column_frame
-    additional_column_frame = tk.Frame(columns_frame, width=300, height=10, padx=50, bg ="#FFD700")  # Adjusted width and padding
+    additional_column_frame = tk.Frame(columns_frame, width=300, height=10, padx=50, bg ="#f7f3df")  # Adjusted width and padding
     additional_column_frame.pack(side=tk.LEFT)
 
     # Exclude the last column
@@ -193,24 +193,24 @@ def display_movie_info(movie, filtered):
         target_frame = left_column_frame if i <= 6 else right_column_frame
 
         # Create a frame for the column
-        column_frame = tk.Frame(target_frame, bg ="#FFD700")
+        column_frame = tk.Frame(target_frame, bg ="#f7f3df")
         column_frame.pack(side=tk.TOP, anchor="w")
 
         # Create a label for the column name
-        column_name_label = tk.Label(column_frame, text=f"{column}:", font=("Courier", font_size), anchor="w", bg ="#FFD700")
+        column_name_label = tk.Label(column_frame, text=f"{column}:", font=("Courier", font_size), anchor="w", bg ="#f7f3df")
         column_name_label.pack(side=tk.LEFT)
 
         # Create a label for the column value with text wrap
-        column_value_label = tk.Label(column_frame, text=str(movie[column].values[0]), font=("Courier", font_size), bg ="#FFD700",
+        column_value_label = tk.Label(column_frame, text=str(movie[column].values[0]), font=("Courier", font_size), bg ="#f7f3df",
                                        wraplength=300)  # Adjust wrap length as needed
         column_value_label.pack(side=tk.LEFT)
 
     # Create a frame for the "Summary" label
-    summary_label_frame = tk.Frame(info_frame, width=1400, height=30, bg ="#FFD700")
+    summary_label_frame = tk.Frame(info_frame, width=1400, height=30, bg ="#f7f3df")
     summary_label_frame.pack(side=tk.TOP, pady=5)
 
     # Create a label for the "Summary" text
-    summary_label = tk.Label(summary_label_frame, text="Summary:", font=("Courier", 15), bg ="#FFD700")
+    summary_label = tk.Label(summary_label_frame, text="Summary:", font=("Courier", 15), bg ="#f7f3df")
     summary_label.pack()
 
     # Create a frame for the last column
@@ -219,7 +219,7 @@ def display_movie_info(movie, filtered):
 
     # Create a label for the last column value with text wrap
     last_column_value_label = tk.Label(last_column_frame, text=str(movie[movie.columns[-1]].values[0]),
-                                       font=("Courier", 13), wraplength=1300, anchor="w", justify="left", bg ="#FFD700")
+                                       font=("Courier", 13), wraplength=1300, anchor="w", justify="left", bg ="#f7f3df")
     last_column_value_label.pack()
 
     # Run the movie_recommender function
@@ -227,12 +227,12 @@ def display_movie_info(movie, filtered):
 
     # Create a label in the additional_column_frame for the recommendations
     recommendation_label = tk.Label(additional_column_frame, text=f"Recommendations:\n{recommended_movies}",
-                                    font=("Courier", 15), wraplength=300, bg ="#FFD700")
+                                    font=("Courier", 15), wraplength=300, bg ="#f7f3df")
     recommendation_label.pack(side=tk.LEFT)
 
     # Add a button to go back to the home page
     back_button = tk.Button(selections_frame, text="Back to Home", width=15, height=2,
-                            bg="#FFD580", fg="Black", command=go_to_home)
+                            bg="#cccccc", fg="Black", command=go_to_home)
     back_button.pack(side=tk.BOTTOM, pady=(0, 30))  # Adjust padding as needed
 
 
@@ -256,10 +256,10 @@ def go_to_game(win):
 
 def game_page(window):
     global game_frame
-    game_frame = tk.Frame(window, bg="#FFD700")
+    game_frame = tk.Frame(window, bg="#f7f3df")
     game_frame.pack(fill='both', expand=1)
 
-    tk.Label(game_frame, text="What Should it Be Rated - ML Model\n", font=("Courier", 30), bg="#FFD700").pack()
+    tk.Label(game_frame, text="What Should it Be Rated - ML Model\n", font=("Courier", 30), bg="#f7f3df").pack()
 
     # Import the ttk module
     from tkinter import ttk
@@ -271,7 +271,7 @@ def game_page(window):
 
     for i, rating in enumerate(maturity_ratings):
         # Create a label for the heading
-        heading_label = tk.Label(game_frame, text=f"Parents Guide for {rating}:", font=("Helvetica", 12), pady=18, bg="#FFD700")
+        heading_label = tk.Label(game_frame, text=f"Parents Guide for {rating}:", font=("Helvetica", 12), pady=18, bg="#f7f3df")
         heading_label.pack()
 
         # Create and configure the dropdown box
@@ -283,16 +283,16 @@ def game_page(window):
         dropdown_boxes.append(dropdown)
 
     # Create a frame for buttons
-    button_frame = tk.Frame(game_frame, bg="#FFD700")
+    button_frame = tk.Frame(game_frame, bg="#f7f3df")
     button_frame.pack(side=tk.BOTTOM, pady=(10, 10))
 
     # Create a button to retrieve information and call the predict_certificate function
     predict_button = tk.Button(button_frame, text="Predict Certificate", width=20, height=2,
-                               bg="#FFD580", fg="Black", command=lambda: predict_and_display(dropdown_boxes))
+                               bg="#cccccc", fg="Black", command=lambda: predict_and_display(dropdown_boxes))
     predict_button.pack(side=tk.LEFT, padx=10)  # Adjust padding as needed
 
     # Create a label to display the prediction result
-    result_label = tk.Label(game_frame, text="", font=("Helvetica", 20), pady=10, bg="#FFD700")
+    result_label = tk.Label(game_frame, text="", font=("Helvetica", 20), pady=10, bg="#f7f3df")
     result_label.pack()
 
     def predict_and_display(dropdown_boxes):
@@ -311,7 +311,7 @@ def game_page(window):
 
     # Button to return to the home page
     back_button = tk.Button(button_frame, text="Back to Home", width=20, height=2,
-                            bg="#FFD580", fg="Black", command=go_to_summaries)
+                            bg="#cccccc", fg="Black", command=go_to_summaries)
     back_button.pack(side=tk.RIGHT, padx=10)  # Adjust padding as needed
 
 main()
